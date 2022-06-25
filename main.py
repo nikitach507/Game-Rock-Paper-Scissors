@@ -1,38 +1,54 @@
 import random
-comp_turn = ["k", "n", "b"]
+comp_turn = ["kamen", "nozhnici", "bumaga"]
 game = True
+comp_points = 0
+user_points = 0
 while game:
     print("k - kamen, n - nozhnici, b - bumaga, exit - vyhod")
     turn = input()
-    if turn == "k": print("kamen - your turn")
-    elif turn == "b": print("bumaga - your turn")
-    elif turn == "n": print("nozhnici - your turn")
+    c_turn = random.choice(comp_turn)
+    if turn == "k":
+        print("kamen - your turn")
+        print(c_turn + " - computer turn")
+    elif turn == "b":
+        print("bumaga - your turn")
+        print(c_turn + " - computer turn")
+    elif turn == "n":
+        print("nozhnici - your turn")
+        print(c_turn + " - computer turn")
     elif turn == "exit":
         print("bye")
         game = False
-    c_turn = random.choice(comp_turn)
-    if c_turn == "k":
-        c_turn = "kamen"
-    elif c_turn == "b":
-        c_turn = "bumaga"
-    elif c_turn == "n":
-        c_turn = "nozhnici"
-    print(c_turn + " - computer turn")
+    elif turn != "k" and turn != "n" and turn != "b":
+        print("You wrote wrong")
     if turn == "k" and c_turn == "nozhnici":
-        print("You win")
+        user_points = user_points + 1
+        print("You win. Game score", user_points, ":", comp_points)
     if turn == "n" and c_turn == "bumaga":
-            print("You win")
+        user_points = user_points + 1
+        print("You win. Game score", user_points, ":", comp_points)
     if turn == "b" and c_turn == "kamen":
-                print("You win")
+        user_points = user_points + 1
+        print("You win. Game score", user_points, ":", comp_points)
     if turn == "k" and c_turn == "bumaga":
-        print("You lose")
+        comp_points = comp_points + 1
+        print("You lose. Game score", user_points, ":", comp_points)
     if turn == "n" and c_turn == "kamen":
-            print("You lose")
+        comp_points = comp_points + 1
+        print("You lose. Game score", user_points, ":", comp_points)
     if turn == "b" and c_turn == "nozhnici":
-                print("You lose")
+        comp_points = comp_points + 1
+        print("You lose. Game score", user_points, ":", comp_points)
     if turn == "b" and c_turn == "bumaga":
-        print("Draw")
+        comp_points = comp_points + 1
+        user_points = user_points + 1
+        print("Draw. Game score", user_points, ":", comp_points)
     if turn == "n" and c_turn == "nozhnici":
-            print("Draw")
+        comp_points = comp_points + 1
+        user_points = user_points + 1
+        print("Draw. Game score", user_points, ":", comp_points)
     if turn == "k" and c_turn == "kamen":
-                print("Draw")
+        comp_points = comp_points + 1
+        user_points = user_points + 1
+        print("Draw. Game score", user_points, ":", comp_points)
+
